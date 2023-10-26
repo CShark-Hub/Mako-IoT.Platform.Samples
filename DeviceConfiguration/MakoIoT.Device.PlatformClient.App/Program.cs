@@ -7,6 +7,7 @@ using nanoFramework.DependencyInjection;
 using System.Threading;
 using MakoIoT.Device.Platform.Interface.Configuration;
 using MakoIoT.Device.Platform.LocalConfig.Extensions;
+using MakoIoT.Device.PlatformClient.App.Configuration;
 using MakoIoT.Device.PlatformClient.Extensions;
 using MakoIoT.Device.Services.ConfigurationManager;
 using MakoIoT.Device.Services.ConfigurationManager.Events;
@@ -33,7 +34,6 @@ namespace MakoIoT.Device.PlatformClient.App
                 .ConfigureDI(s =>
                 {
                     s.AddSingleton(typeof(GpioController));
-
                     s.AddSingleton(typeof(ConfigButton));
                     s.AddSingleton(typeof(UpdateButton));
                     s.AddSingleton(typeof(ConfigUpdater));
@@ -64,26 +64,23 @@ namespace MakoIoT.Device.PlatformClient.App
                     c.WriteDefault(WiFiAPConfig.SectionName, new WiFiAPConfig
                     {
                         Ssid = "MAKO-IoT Device",
-                        Password = "csharkmakers",
+                        Password = "makoiotmakers",
                     });
 
                     c.WriteDefault(WiFiConfig.SectionName, new WiFiConfig());
-
-                    c.WriteDefault(PlatformConfig.SectionName, new PlatformConfig
-                    {
-                        PlatformServiceUrl = "https://mako-iot-platform-deviceapi-url.com/",
-                    });
+                    c.WriteDefault(PlatformConfig.SectionName, new PlatformConfig());
+                    c.WriteDefault(PlatformBlinkConfig.SectionName, new PlatformBlinkConfig());
                 });
 
             var device = builder.Build();
             device.Start();
 
             //initialize hardware buttons
-            var configButton = (ConfigButton)device.ServiceProvider.GetService(typeof(ConfigButton));
-            var updateButton = (UpdateButton)device.ServiceProvider.GetService(typeof(UpdateButton));
+            device.ServiceProvider.GetService(typeof(ConfigButton));
+            device.ServiceProvider.GetService(typeof(UpdateButton));
 
-            var blink = (PlatformBlink)device.ServiceProvider.GetService(typeof(PlatformBlink));
-            blink.Initialize();
+            ((PlatformBlink)device.ServiceProvider.GetService(typeof(PlatformBlink)))
+                .Initialize();
           
             Thread.Sleep(Timeout.Infinite);
         }

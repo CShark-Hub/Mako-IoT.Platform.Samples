@@ -47,6 +47,9 @@ namespace MakoIoT.Device.PlatformClient.App.HardwareServices
 
             var interval = config.Interval;
 
+            if (interval == 0)
+                return;
+
             while (!_cancellationToken.IsCancellationRequested)
             {
                 _pin.Write(PinValue.High);
