@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <NanoFrameworkProjectSystemPath>$(MSBuildExtensionsPath)\nanoFramework\v1.0\</NanoFrameworkProjectSystemPath>
+  </PropertyGroup>
+  <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.Default.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{11A8DD76-328B-46DF-9F39-F559912D0360};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>b9e6add0-a4db-4971-be9b-2fb642d603cf</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>MakoIoT.Device.PlatformClient.App</RootNamespace>
+    <AssemblyName>MakoIoT.Device.PlatformClient.App</AssemblyName>
+    <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
+  <ItemGroup>
+    <Compile Include="Events\ConfigUpdatedEvent.cs" />
+    <Compile Include="Events\ConfigUpdateEvent.cs" />
+    <Compile Include="Services\ConfigUpdater.cs" />
+    <Compile Include="HardwareServices\ConfigButton.cs" />
+    <Compile Include="HardwareServices\DeviceControlService.cs" />
+    <Compile Include="HardwareServices\UpdateButton.cs" />
+    <Compile Include="HardwareServices\PlatformBlink.cs" />
+    <Compile Include="Configuration\PlatformBlinkConfig.cs" />
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Iot.Device.Button">
+      <HintPath>..\packages\nanoFramework.Iot.Device.Button.1.2.329\lib\Iot.Device.Button.dll</HintPath>
+    </Reference>
+    <Reference Include="Iot.Device.DhcpServer">
+      <HintPath>..\packages\nanoFramework.Iot.Device.DhcpServer.1.2.378\lib\Iot.Device.DhcpServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device">
+      <HintPath>..\packages\MakoIoT.Device.1.0.38.15761\lib\MakoIoT.Device.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Platform.Interface">
+      <HintPath>..\packages\MakoIoT.Device.Platform.Interface.1.0.1.28390\lib\MakoIoT.Device.Platform.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Platform.LocalConfig">
+      <HintPath>..\packages\MakoIoT.Device.Platform.LocalConfig.1.0.1.14464\lib\MakoIoT.Device.Platform.LocalConfig.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.PlatformClient">
+      <HintPath>..\packages\MakoIoT.Device.PlatformClient.1.0.1.95\lib\MakoIoT.Device.PlatformClient.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.Configuration">
+      <HintPath>..\packages\MakoIoT.Device.Services.Configuration.1.0.31.51806\lib\MakoIoT.Device.Services.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.Configuration.Metadata">
+      <HintPath>..\packages\MakoIoT.Device.Services.Configuration.Metadata.1.0.30.32136\lib\MakoIoT.Device.Services.Configuration.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.ConfigurationManager">
+      <HintPath>..\packages\MakoIoT.Device.Services.ConfigurationManager.1.0.44.25169\lib\MakoIoT.Device.Services.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.FileStorage">
+      <HintPath>..\packages\MakoIoT.Device.Services.FileStorage.1.0.30.57507\lib\MakoIoT.Device.Services.FileStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.Interface">
+      <HintPath>..\packages\MakoIoT.Device.Services.Interface.1.0.36.21434\lib\MakoIoT.Device.Services.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.Logging">
+      <HintPath>..\packages\MakoIoT.Device.Services.Logging.1.0.38.2444\lib\MakoIoT.Device.Services.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.Mediator">
+      <HintPath>..\packages\MakoIoT.Device.Services.Mediator.1.0.31.54540\lib\MakoIoT.Device.Services.Mediator.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.Server">
+      <HintPath>..\packages\MakoIoT.Device.Services.Server.1.0.33.42549\lib\MakoIoT.Device.Services.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.WiFi">
+      <HintPath>..\packages\MakoIoT.Device.Services.WiFi.1.0.35.20139\lib\MakoIoT.Device.Services.WiFi.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Services.WiFi.AP">
+      <HintPath>..\packages\MakoIoT.Device.Services.WiFi.AP.1.0.36.4164\lib\MakoIoT.Device.Services.WiFi.AP.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Utilities.Invoker">
+      <HintPath>..\packages\MakoIoT.Device.Utilities.Invoker.1.0.24.34787\lib\MakoIoT.Device.Utilities.Invoker.dll</HintPath>
+    </Reference>
+    <Reference Include="MakoIoT.Device.Utilities.String">
+      <HintPath>..\packages\MakoIoT.Device.Utilities.String.1.0.31.17475\lib\MakoIoT.Device.Utilities.String.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.14.2\lib\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.DependencyInjection">
+      <HintPath>..\packages\nanoFramework.DependencyInjection.1.0.35\lib\nanoFramework.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.Json">
+      <HintPath>..\packages\nanoFramework.Json.2.2.101\lib\nanoFramework.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.Logging">
+      <HintPath>..\packages\nanoFramework.Logging.1.1.63\lib\nanoFramework.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.ResourceManager">
+      <HintPath>..\packages\nanoFramework.ResourceManager.1.2.13\lib\nanoFramework.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.Runtime.Events">
+      <HintPath>..\packages\nanoFramework.Runtime.Events.1.11.6\lib\nanoFramework.Runtime.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.Runtime.Native">
+      <HintPath>..\packages\nanoFramework.Runtime.Native.1.6.6\lib\nanoFramework.Runtime.Native.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.System.Collections">
+      <HintPath>..\packages\nanoFramework.System.Collections.1.5.18\lib\nanoFramework.System.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.System.Text">
+      <HintPath>..\packages\nanoFramework.System.Text.1.2.37\lib\nanoFramework.System.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Device.Gpio">
+      <HintPath>..\packages\nanoFramework.System.Device.Gpio.1.1.28\lib\System.Device.Gpio.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Device.Wifi">
+      <HintPath>..\packages\nanoFramework.System.Device.Wifi.1.5.65\lib\System.Device.Wifi.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem">
+      <HintPath>..\packages\nanoFramework.System.IO.FileSystem.1.1.23\lib\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Streams">
+      <HintPath>..\packages\nanoFramework.System.IO.Streams.1.1.38\lib\System.IO.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net">
+      <HintPath>..\packages\nanoFramework.System.Net.1.10.62\lib\System.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\nanoFramework.System.Net.Http.1.5.104\lib\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>..\packages\nanoFramework.System.Threading.1.1.19\lib\System.Threading.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
+  <ProjectExtensions>
+    <ProjectCapabilities>
+      <ProjectConfigurationsDeclaredAsItems />
+    </ProjectCapabilities>
+  </ProjectExtensions>
+</Project>
